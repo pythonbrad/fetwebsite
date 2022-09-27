@@ -1,0 +1,111 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block banner %}
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <!-- Carousel indicators -->
+  <ol class="carousel-indicators">
+    <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+    <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+    <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+  </ol>
+  
+  <!-- Wrapper for carousel items -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'assets/images/comp_eng.jpg' %}" class="d-block w-100" style="height: 75vh; object-fit: cover;" alt="Slide 1">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'assets/images/civil_eng.jpg' %}" class="d-block w-100" style="height: 75vh; object-fit: cover;" alt="Slide 2">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'assets/images/elec_eng.jpg' %}" class="d-block w-100" style="height: 75vh; object-fit: cover;" alt="Slide 3">
+    </div>
+  </div>
+
+  <!-- Carousel controls -->
+  <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 my-2">
+      <div class="card h-75">
+        <img src="{% static 'assets/images/register.jpg' %}" class="card-img-top h-100" alt="..." style="object-fit: cover;">
+        <a class="text-decoration-none text-dark" href="{% url 'core:program-groups-list' %}">
+          <div class="card-body bg-warning">
+            <span class="card-text" href="{% url 'core:program-groups-list' %}">REGISTER for a programme</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-sm-4 my-2">
+      <div class="card h-75">
+        <img src="{% static 'assets/images/research.jpg' %}" class="card-img-top h-100" alt="..." style="object-fit: cover;">
+        <a class="text-decoration-none text-dark" href="{% url 'core:researchs' %}">
+          <div class="card-body bg-info">
+            <span class="card-text" href="{% url 'core:researchs' %}">Research</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-sm-4 my-2">
+      <div class="card h-75">
+        <img src="{% static 'assets/images/partner.jpg' %}" class="card-img-top h-100" alt="..." style="object-fit: cover;">
+        <a class="text-decoration-none text-dark" href="{% url 'core:partner-us' %}">
+          <div class="card-body bg-success">
+            <span class="card-text" href="{% url 'core:partner-us' %}">Partner With Us</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="row mb-3">
+      <span class="fs-3">Our Departments</span>
+    </div>
+    <div class="row">
+      {% for department in request.departments %}
+      <div class="col-sm-4 my-2">
+        <div class="card h-100 bg-{{ department.color }}">
+          <img class="card-img-top h-100 opacity-75" style="object-fit: cover;" src="{{ department.image.url }}">
+          <a class="text-decoration-none text-dark" href="{% url 'core:department-detail' department.slug %}">
+            <div class="card-body">
+              <span>{{ department.name }}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}              
+    </div>
+  </div>
+  <div class="row">
+    <div class="row mb-3">
+      <span class="fs-3">Dean's Welcome Message</span>
+    </div>
+    <div class="row">
+      <div class="card border-0">
+        <div class="row">
+          <div class="col-sm-4 p-0">
+            <img class="card-img" style="object-fit: cover;" src="{% static 'assets/images/dean_fet.jpg' %}">
+          </div>
+          <div class="col-sm">
+            <span>
+              The Faculty of engineering and technology have the mandate to train engineers and Carmel in a variety of disciplines just like a Coppola technically only with Trent engineer in such disciplines as telecommunications our systems engineering software engineering and civil engineering. There are many more disciplines like similar mechanical engineering that will be opened in the future employment particularly self-employment is involved in the validation of the faculty the oldest and general schooling come on Polytechnic had a two-tier system of training where for the first years students did mainly science objects mathematics physics to reinforce the level that they brought from GCA level and the Bakken area so engineering training was betrayus as in Polytechnic so this five year program you have two years of science basic science and three years of engineering.
+            </span>
+            <div class="row">&nbsp;</div>
+            <a class="text-dark" href="{% url 'core:message-dean' %}">Read more...</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

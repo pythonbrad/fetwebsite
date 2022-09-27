@@ -1,0 +1,177 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Faculty of Engineering</title>
+    <link href="{% static 'assets/bootstrap-5.2.1/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/fontawesome-free-6.2.0-web/css/all.min.css' %}" rel="stylesheet">
+    <link rel="icon" href="{% static 'logo.png' %}">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'core:home' %}">
+          <img src="{% static 'logo.png' %}" alt="FET LOGO" width="128" height="64">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'core:home' %}">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'core:about-us' %}">ABOUT US</a>
+            </li>
+            <li class="nav-item dropdown btn-group">
+              <a class="nav-link pe-0" href="{% url 'core:departments-list' %}">DEPARTMENTS</a>
+              <a class="nav-link dropdown-toggle dropdown-toggle-split" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+              <ul class="dropdown-menu">
+                {% for department in request.departments %}
+                <li>
+                  <a class="dropdown-item" href="{% url 'core:department-detail' department.slug %}">{{ department.name }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </li>
+            <li class="nav-item dropdown btn-group">
+              <a class="nav-link pe-0" href="{% url 'core:program-groups-list' %}">PROGRAMMES</a>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="{% url 'core:program-group-detail' %}">Pre-Engineering Programmes</a>
+                </li>
+                {% for program_group in request.program_groups %}
+                <li>
+                  <a class="dropdown-item" href="{% url 'core:program-group-detail' program_group.slug %}">{{ program_group.name }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'core:publications' %}">PUBLICATIONS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'core:student-ressources' %}">STUDENT RESOURCES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'core:contact-us' %}">CONTACT US</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {% block banner %}
+    <div class="container-fluid p-0">
+      <img style="height: 70vh; width: 100%" src="{% static 'assets/images/ban.jpg' %}" style="object-fit: cover;">
+    </div>
+    {% endblock %}
+    <div class="row">&nbsp;</div>
+    <div class="card container-fluid border-0 border-bottom mb-3">
+      <div class="container">
+        <div class="row text-end">
+          <div class="col-sm">
+            <span class="fs-4">Share:</span>&nbsp;
+            <a href="http://www.addtoany.com/add_to/facebook?linkurl={{ request.META.HTTP_HOST|add:request.META.PATH_INFO }}&linkname=The%20Faculty%20of%20Engineering%20and%20Technology&linknote=" class="text-decoration-none text-primary" target="blank">
+              <i class="fab fa-facebook fa-2x"></i>
+            </a>&nbsp;
+            <a href="http://www.addtoany.com/add_to/twitter?linkurl={{ request.META.HTTP_HOST|add:request.META.PATH_INFO }}&linkname=The%20Faculty%20of%20Engineering%20and%20Technology&linknote=" class="text-decoration-none text-info" target="blank">
+              <i class="fab fa-twitter fa-2x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl mb-3">
+          {% block content %}{% endblock %}
+        </div>
+        <div class="col-xl-3">
+          {% block sidebar %}
+          <span class="fs-3">News Feed</span>
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="container-fluid bg-secondary"></div>
+    <div class="container-fluid bg-dark">
+      <div class="row">&nbsp;</div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 text-end">
+            <div class="row">
+              <a class="text-decoration-none text-light" href="{% url 'core:home' %}">The University of Buea</a>
+            </div>
+            <div class="row">
+              <span class="text-light">Buea</span>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+              <span class="text-light">Tel: (237) xxx xxx xxx</span>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-sm">
+                  <a href="https://www.facebook.com/FET_BUEA" class="text-decoration-none text-primary" target="blank">
+                    <i class="fab fa-facebook fa-2x"></i>
+                  </a>
+                  &nbsp;
+                  <a href="https://twitter.com/FET_BUEA" class="text-decoration-none text-info" target="blank">
+                    <i class="fab fa-twitter fa-2x"></i>
+                  </a>
+                  &nbsp;
+                  <a href="https://www.youtube.com/user/FET_BUEA" class="text-decoration-none text-danger" target="blank">
+                    <i class="fab fa-youtube fa-2x"></i>
+                  </a>
+                </div>
+            </div>
+          </div>
+          <div class="col-sm border-0 border-start border-1 border-secondary">
+            <div class="row">
+              <div class="col">
+                <div class="row mb-3">
+                  <a class="text-decoration-none text-light" href="{% url 'core:about-us' %}">About Us</a>
+                </div>
+                <div class="row mb-3">
+                  <a class="text-decoration-none text-light" href="{% url 'core:departments-list' %}">Departments</a>
+                </div>
+                <div class="row mb-3">
+                  <a class="text-decoration-none text-light" href="{% url 'core:program-groups-list' %}">Programmes</a>
+                </div>
+                <div class="row">
+                  <a class="text-decoration-none text-light" href="{% url 'core:publications' %}">Publications</a>
+                </div>
+              </div>
+              <div class="col">
+                {% for program_group in request.program_groups %}
+                <div class="row mb-3">
+                  <a class="text-decoration-none text-light" href="{% url 'core:program-group-detail' program_group.slug %}">{{ program_group.name }}</a>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 border-0 border-start border-1 border-secondary">
+            <div class="row">
+              <a class="text-decoration-none text-light" href="{% url 'core:home' %}">The Faculty of Engineering and Technology</a>
+            </div>
+            <div class="row">
+              <span class="text-light">UB, Buea</span>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+              <span class="text-light">Tel: (237) xxx xxx xxx</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">&nbsp;</div>
+    </div>
+    <script src="{% static 'assets/bootstrap-5.2.1/js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+{% extends 'core/base_2.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+	<span class="fs-3">Pre-Engineering Programme</span>
+	<div class="row">&nbsp;</div>
+	<div class="card">
+		<img src="{% static 'assets/images/pre_eng.jpg' %}" style="height: 20vh; object-fit: cover;" class="card-img">
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<div class="col-sm">
+			<a href="{% static 'assets/pdf/reg_proc_plan.pdf' %}" class="text-decoration-none text-dark">
+				<div class="card h-100">
+					<img src="{% static 'assets/images/pre_eng_2.jpg' %}" style="height: 20vh; object-fit: cover;" class="card-img">
+					<div class="card-body">
+						<span>Registration and Procedure Plan</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="col-sm">
+			<a href="{% static 'assets/pdf/online_reg_inst_guide.pdf' %}" class="text-decoration-none text-dark">
+				<div class="card h-100">
+					<img src="{% static 'assets/images/pre_eng_3.jpg' %}" style="height: 20vh; object-fit: cover;" class="card-img">
+					<div class="card-body">
+						<span>Online Registration Instruction Guide</span>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<span class="fs-3 text-primary">Start: {{ request.system_config.app_start_date }}</span>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<span class="fs-3 text-primary">Application Deadline: {{ request.system_config.app_end_date }}</span>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<a href="https://ubstudent.online/admission_programs" class="btn btn-primary">APPLY NOW</a>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<span>FOR FUTHER INFORMATION:</span>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<span>Telephone: (237) xxx xxx xxx</span>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<span>Email: xxx@xxx.xxx</span>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<span>Visit our Youtube Channel <a href="https://www.youtube.com/user/FET_BUEA">here</a></span>
+	</div>
+</div>
+{% endblock %}

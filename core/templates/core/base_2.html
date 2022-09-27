@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}{% endblock %}
+
+{% block sidebar %}
+<div class="row">
+	<span>Departments</span>
+</div>
+{% for department in request.departments %}
+<div class="row">&nbsp;</div>
+<div class="row">
+	<a href="{% url 'core:department-detail' department.slug %}">{{ department.name }}</a>
+</div>
+{% endfor %}
+{% endblock %}

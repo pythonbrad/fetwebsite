@@ -1,0 +1,14 @@
+{% extends 'core/base_2.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+	<span class="fs-3">{{ program_group.name }}</span>
+	<div class="row">&nbsp;</div>
+	<ul>
+		{% for program in program_group.program_set.all %}
+		<li>{{ program_group.code }} in {{ program.name }}</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}
