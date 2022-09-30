@@ -37,12 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core.apps.CoreConfig'
+    'core.apps.CoreConfig',
+    'debug_toolbar',
+    "blog",
+    "crispy_forms",
+    "crispy_bootstrap5",
+    "django_summernote",
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -52,6 +58,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'fetwebsite.urls'
+
+# Django Debug Toolbar https://django-debug-toolbar.readthedocs.io/en/latest/installation.html
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 TEMPLATES = [
     {
@@ -131,3 +142,9 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+X_FRAME_OPTIONS = "SAMEORIGIN"
