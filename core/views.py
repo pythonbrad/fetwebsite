@@ -33,4 +33,8 @@ def department_detail(request, slug):
 	return redirect('/')
 
 def student_ressources(request):
-	return render(request, 'core/student_ressources.html')
+	buildings = Building.objects.all()
+	return render(request, 'core/student_ressources.html', {'buildings': buildings})
+
+def publications(request):
+	return render(request, 'core/publications.html')

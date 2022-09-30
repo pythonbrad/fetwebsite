@@ -14,7 +14,7 @@ urlpatterns = [
     path('program', views.program_group_detail, name='program-group-detail'),
     path('program/<slug>', views.program_group_detail, name='program-group-detail'),
     path('programs', views.program_groups_list, name='program-groups-list'),
-    path('publications', views.index, name='publications'),
+    path('publications', views.publications, name='publications'),
     path('researchs', views.index, name='researchs'),
     path('student-ressources', views.student_ressources, name='student-ressources'),
 ]

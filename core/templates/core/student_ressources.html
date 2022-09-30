@@ -16,7 +16,7 @@
 			</a>
 		</div>
 		<div class="col-sm-4 my-2">
-			<a class="text-decoration-none text-dark" href="{% static 'assets/pdf/ud_info.pdf' %}">
+			<a class="text-decoration-none text-dark" href="{% static 'assets/pdf/ud_info.pdf' %}" target="_blank">
 				<div class="card p-2">
 					<img class="card-img" style="height: 20vh; object-fit: contain;" src="{% static 'assets/images/pdf.jpg' %}">
 					<div class="card-body text-center">
@@ -26,7 +26,7 @@
 			</a>
 		</div>
 		<div class="col-sm-4 my-2">
-			<a class="text-decoration-none text-dark" href="{% static 'assets/pdf/pd_info.pdf' %}">
+			<a class="text-decoration-none text-dark" href="{% static 'assets/pdf/pd_info.pdf' %}" target="_blank">
 				<div class="card p-2">
 					<img class="card-img" style="height: 20vh; object-fit: contain;" src="{% static 'assets/images/pdf.jpg' %}">
 					<div class="card-body text-center">
@@ -36,7 +36,7 @@
 			</a>
 		</div>
 		<div class="col-sm-4 my-2">
-			<a class="text-decoration-none text-dark" href="{% static 'assets/pdf/academic_calendar.pdf' %}">
+			<a class="text-decoration-none text-dark" href="{% static 'assets/pdf/academic_calendar.pdf' %}" target="_blank">
 				<div class="card p-2">
 					<img class="card-img" style="height: 20vh; object-fit: contain;" src="{% static 'assets/images/pdf.jpg' %}">
 					<div class="card-body text-center">
@@ -47,7 +47,39 @@
 		</div>
 	</div>
 	<div class="row">&nbsp;</div>
-	<span class="fs-3">Faculty Map</span>
-	<span class="fs-3">Classroom Location</span>
+	<div class="row">
+		<span class="fs-3">Faculty Map</span>
+	</div>
+	<div class="row">
+		<a class="text-decoration-none text-dark" href="{% static 'assets/pdf/ub_map.pdf' %}" target="_blank">
+			<i class="fa fa-map fa-4x text-muted"></i>
+		</a>
+		<span>
+			Use the Faculty Map above to locate the Classrooms below.
+		</span>
+	</div>
+	<div class="row">&nbsp;</div>
+	<span class="fs-3 text-primary">Classroom Location</span>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Building</th>
+				<th>Room</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for building in buildings %}
+			<tr>
+				<td>{{ building.name }}</td>
+				<td>
+					{% for room in  building.room_set.all  %}
+					{{ room.name }}
+					{% if not forloop.last %}, {% endif %}
+					{% endfor %}
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
 </div>
 {% endblock %}

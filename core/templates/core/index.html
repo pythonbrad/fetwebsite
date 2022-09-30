@@ -13,13 +13,13 @@
   <!-- Wrapper for carousel items -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{% static 'assets/images/comp_eng.jpg' %}" class="d-block w-100" style="height: 75vh; object-fit: cover;" alt="Slide 1">
+      <img src="{% static 'assets/images/comp_eng.jpg' %}" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 1">
     </div>
     <div class="carousel-item">
-      <img src="{% static 'assets/images/civil_eng.jpg' %}" class="d-block w-100" style="height: 75vh; object-fit: cover;" alt="Slide 2">
+      <img src="{% static 'assets/images/civil_eng.jpg' %}" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 2">
     </div>
     <div class="carousel-item">
-      <img src="{% static 'assets/images/elec_eng.jpg' %}" class="d-block w-100" style="height: 75vh; object-fit: cover;" alt="Slide 3">
+      <img src="{% static 'assets/images/elec_eng.jpg' %}" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 3">
     </div>
   </div>
 
@@ -98,7 +98,7 @@
           </div>
           <div class="col-sm">
             <span>
-              The Faculty of engineering and technology have the mandate to train engineers and Carmel in a variety of disciplines just like a Coppola technically only with Trent engineer in such disciplines as telecommunications our systems engineering software engineering and civil engineering. There are many more disciplines like similar mechanical engineering that will be opened in the future employment particularly self-employment is involved in the validation of the faculty the oldest and general schooling come on Polytechnic had a two-tier system of training where for the first years students did mainly science objects mathematics physics to reinforce the level that they brought from GCA level and the Bakken area so engineering training was betrayus as in Polytechnic so this five year program you have two years of science basic science and three years of engineering.
+              {{ request.system_config.dean_message|slice:400 }}...
             </span>
             <div class="row">&nbsp;</div>
             <a class="text-dark" href="{% url 'core:message-dean' %}">Read more...</a>
