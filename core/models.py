@@ -4,7 +4,7 @@ from django.contrib import admin
 # Create your models here.
 class SystemConfig(models.Model):
 	key = models.CharField(max_length=16)
-	value = models.TextField(max_length=65536)
+	value = models.TextField(max_length=65532)
 
 	def __str__(self):
 		return self.key

@@ -11,16 +11,20 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+# reading .env file
+environ.Env.read_env(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-q15x5qocy^pzie=9m7&dth)&tx2h=hlbaxe3uy&7#bx73i5tod'
+SECRET_KEY = env('django_session')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -88,8 +92,12 @@ WSGI_APPLICATION = 'fetwebsite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': env('db_name'),
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': env('db_user'),
+        'PASSWORD': env('db_pass'),
+        'HOST': env('db_host'),
+        'PORT': env('db_port'),
     }
 }
 
