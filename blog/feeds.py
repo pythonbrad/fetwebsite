@@ -6,9 +6,9 @@ from .models import Post
 
 
 class LatestPostsFeed(Feed):
-    title = "My blog"
+    title = "The FET's Blog"
     link = ""
-    description = "New posts of my blog."
+    description = "New posts of the FET's Blog."
 
     def items(self):
         return Post.objects.filter(status=1)
