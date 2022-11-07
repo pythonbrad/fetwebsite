@@ -15,14 +15,9 @@ python3 -m venv .fet_venv
 source .fet_venv/bin/activate
 pip install -r requirements.txt
 ```
-- Config the environement (create a .env file in function of .env_example)
+- Config the environement (.env file)
 ```sh
-echo "django_session=session_key" >> .env
-echo "db_name=database" >> .env
-echo "db_user=user" >> .env
-echo "db_pass=password" >> .env
-echo "db_host=127.0.0.1" >> .env
-echo "db_port=3306" >> .env
+cp .env_example .env
 ```
 - Config the database
 ```sh
