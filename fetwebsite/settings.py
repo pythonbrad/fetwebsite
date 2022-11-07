@@ -29,8 +29,7 @@ SECRET_KEY = env('django_session')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = env.list("allowed_hosts")
 
 # Application definition
 
