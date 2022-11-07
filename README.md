@@ -1,5 +1,8 @@
 # fetwebsite
 
+## Preview
+![Preview](https://repository-images.githubusercontent.com/543677366/2dc949b7-baa9-4e81-a7fb-c29b1c5c589f)
+
 ## How to deploy
 - Download the source code
 ```sh
