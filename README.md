@@ -8,11 +8,11 @@ cd fetwebsite
 ```
 - Create a virtual environment
 ```sh
-python3 -m venv venv
+python3 -m venv .fet_venv
 ```
 - Install the requirements
 ```sh
-source venv/bin/activate
+source .fet_venv/bin/activate
 pip install -r requirements.txt
 ```
 - Config the environement (create a .env file in function of .env_example)
